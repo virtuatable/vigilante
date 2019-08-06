@@ -115,6 +115,7 @@ PLATFORMS
 
 DEPENDENCIES
   arkaan (= 1.6.0)
+  dotenv (= 2.7.2)
   faraday (= 0.15.2)
   mongoid (= 7.0.1)
 
