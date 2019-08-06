@@ -31,3 +31,6 @@ workflows:
                 - issue/cron
     jobs:
       - surveillance-job
+  deploy:
+    jobs:
+      - surveillance-job
