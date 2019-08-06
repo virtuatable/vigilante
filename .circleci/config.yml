@@ -25,6 +25,14 @@ workflows:
   watch:
     triggers:
       - schedule:
-          cron: "*/10 * * * *"
+          cron: 0,10,20,30,40,50 * * * *
+          filters:
+            branches:
+              only:
+                - master
+                - issue/cron
+    jobs:
+      - surveillance-job
+  deploy:
     jobs:
       - surveillance-job
