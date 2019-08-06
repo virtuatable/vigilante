@@ -11,7 +11,7 @@ jobs:
       - virtuacommands/setup-ruby-environment
       - run:
           name: "Make a watch over the whole infrastructure to detect problems"
-          command: bundle exec ruby watcher.rb
+          command: bundle exec ruby watcher.rb > /tmp/surveillance/results.html
       - store_test_results:
           path: /tmp/surveillance
       - store_artifacts:
