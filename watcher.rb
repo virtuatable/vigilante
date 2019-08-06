@@ -12,7 +12,6 @@ logger.level = Logger::ERROR
 vigilante = Arkaan::Monitoring::Vigilante.first_or_create(token: ENV['VIGILANTE_TOKEN'])
 
 Arkaan::Monitoring::Service.each do |service|
-  puts service.key
   tmp_results = {}
   path = "#{service.path}#{service.diagnostic}"
   service.instances.each do |instance|
