@@ -1,0 +1,6 @@
+puts "<!DOCTYPE html>"
+puts "<html>"
+puts "  <body>"
+puts "    <h1>Test</h1>"
+puts "  </body>"
+puts "</html>"
