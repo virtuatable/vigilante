@@ -6,7 +6,7 @@ orbs:
 
 jobs:
   surveillance-job:
-    executor: virtuaorbs/mongoruby_2.6.3
+    executor: virtuaexecutors/mongoruby_2.6.3
     steps:
       - virtuacommands/setup-ruby-environment
       - run:
