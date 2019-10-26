@@ -41,6 +41,7 @@ GEM
     bcrypt (3.1.11)
     bson (4.5.0)
     builder (3.2.3)
+    chronic (0.10.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     dotenv (2.7.2)
@@ -109,6 +110,8 @@ GEM
     tilt (2.0.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -118,6 +121,7 @@ DEPENDENCIES
   dotenv (= 2.7.2)
   faraday (= 0.15.2)
   mongoid (= 7.0.1)
+  whenever
 
 BUNDLED WITH
    1.17.2

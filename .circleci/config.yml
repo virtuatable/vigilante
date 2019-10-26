@@ -5,7 +5,7 @@ orbs:
   virtuacommands: virtuaorbs/commands@0.3.0
 
 jobs:
-  surveillance-job:
+  deploy-job:
     executor: virtuaexecutors/mongoruby_2-6-3
     steps:
       - virtuacommands/setup-ruby-environment
@@ -13,7 +13,7 @@ jobs:
           name: "Make a watch over the whole infrastructure to detect problems"
           command: |
             mkdir /tmp/surveillance
-            bundle exec ruby watcher.rb > /tmp/surveillance/results.json
+            bundle exec whenever --update-crontab
       - store_test_results:
           path: /tmp/surveillance
       - store_artifacts:
@@ -22,17 +22,6 @@ jobs:
 
 workflows:
   version: 2.1
-  watch:
-    triggers:
-      - schedule:
-          cron: 0,10,20,30,40,50 * * * *
-          filters:
-            branches:
-              only:
-                - master
-                - issue/cron
-    jobs:
-      - surveillance-job
   deploy:
     jobs:
-      - surveillance-job
+      - deploy-job
