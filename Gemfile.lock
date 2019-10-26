@@ -43,11 +43,16 @@ GEM
     bcrypt (3.1.11)
     bson (4.5.0)
     builder (3.2.3)
-    capistrano (3.11.2)
+    capistrano (3.11.0)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundler (1.5.0)
+      capistrano (~> 3.1)
+    capistrano-rvm (0.1.1)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     chronic (0.10.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
@@ -132,7 +137,9 @@ PLATFORMS
 
 DEPENDENCIES
   arkaan (= 1.6.1)
-  capistrano
+  capistrano (= 3.11.0)
+  capistrano-bundler (= 1.5.0)
+  capistrano-rvm (= 0.1.1)
   dotenv (= 2.7.2)
   faraday (= 0.15.2)
   mongoid (= 7.0.1)
