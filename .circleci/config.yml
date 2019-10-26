@@ -8,17 +8,8 @@ jobs:
   deploy-job:
     executor: virtuaexecutors/mongoruby_2-6-3
     steps:
-      - virtuacommands/setup-ruby-environment
-      - run:
-          name: "Make a watch over the whole infrastructure to detect problems"
-          command: |
-            mkdir /tmp/surveillance
-            bundle exec whenever --update-crontab
-      - store_test_results:
-          path: /tmp/surveillance
-      - store_artifacts:
-          path: /tmp/surveillance
-          destination: surveillance
+      - virtuacommands/perform-capistrano-command:
+          command: "deploy"
 
 workflows:
   version: 2.1
