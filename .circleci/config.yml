@@ -10,7 +10,8 @@ jobs:
     steps:
       - virtuacommands/perform-capistrano-command:
           command: "deploy"
-
+      - virtuacommands/perform-capistrano-command:
+          command: "deploy:start"
 workflows:
   version: 2.1
   deploy:
