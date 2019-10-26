@@ -2,7 +2,6 @@ require 'arkaan'
 require 'mongoid'
 require 'faraday'
 require './models/heartbeat.rb'
-require './lib/watch.rb'
 
 Dotenv.load
 Mongoid.load!('config/mongoid.yml', ENV['RACK_ENV'])
