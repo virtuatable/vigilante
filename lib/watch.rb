@@ -33,7 +33,7 @@ Arkaan::Monitoring::Service.each do |service|
       end
       heartbeat.status = response.status
       heartbeat.body = JSON.parse(response.body)
-      heartbeat.healthy = response.status == 200 && heartbeat.body['body'] == 'ok' rescue false
+      heartbeat.healthy = response.status == 200 && heartbeat.body['health'] == 'ok' rescue false
     rescue StandardError
       heartbeat.status = 500
       heartbeat.body = '{"type": "timeout"}'
