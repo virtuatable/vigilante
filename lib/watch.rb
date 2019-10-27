@@ -1,8 +1,6 @@
 require 'arkaan'
 require 'mongoid'
 require 'faraday'
-require './models/heartbeat.rb'
-require './models/report.rb'
 
 Dotenv.load
 Mongoid.load!('config/mongoid.yml', ENV['RACK_ENV'])
@@ -12,12 +10,12 @@ logger.level = Logger::ERROR
 
 vigilante = Arkaan::Monitoring::Vigilante.first_or_create(token: ENV['VIGILANTE_TOKEN'])
 
-report = Arkaan::Report.new
+report = Arkaan::Monitoring::Results::Report.new(vigilante: vigilante)
 report.start!
 
 Arkaan::Monitoring::Service.each do |service|
   service.instances.each do |instance|
-    heartbeat = Arkaan::Heartbeat.new(instance: instance)
+    heartbeat = Arkaan::Monitoring::Results::Heartbeat.new(instance: instance)
     heartbeat.start!
 
     connection = Faraday.new(url: instance.url) do |faraday|
@@ -39,8 +37,10 @@ Arkaan::Monitoring::Service.each do |service|
       heartbeat.body = '{"type": "timeout"}'
       heartbeat.healthy = false
     end
-    report.add_heartbeat!(heartbeat)
+    heartbeat.end!
+    report.add_heartbeat(heartbeat)
+    heartbeat.save!
   end
 end
 
-report.terminate!
+report.end!
