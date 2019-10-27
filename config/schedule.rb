@@ -18,6 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 1.minutes do
+every 10.minutes do
   rake 'watch'
 end
